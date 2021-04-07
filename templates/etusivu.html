@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <title>Facebook 2019 -tietovuoto tarkastus</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<noscript>
+  <h1>
+    Ilman JavaScriptiä sivusto ei toimi!
+  </h1>
+</noscript>
+
+<div class="jumbotron text-center">
+  <h1>Facebook 2019 -tietovuoto tarkastus</h1>
+</div>
+
+<div class="container">
+    <form id="search">
+        <div class="row">
+          <div class="col-md-10">
+            <input type="tel" class="form-control" id="tel" placeholder="Puhelinnumero muodossa: 358401234567" name="tel">
+          </div>
+          <div class="col">
+            <button type="submit" class="btn btn-primary mb-2">Tarkasta</button>
+          </div>
+        </div>
+    </form>
+</div>
+
+<div class="container">
+  <hr>
+  <p>Syötä puhelinnumero yllä olevaan kenttään tarkastaaksesi onko se ollut Facebookin vuoden 2019 tietomurrossa. Puhelinnumerossa ei saa olla välilyöntejä eikä erikoismerkkejä. Maatunnus on lisättävä alkuun. <br>Esimerkki: <code>358401234567</code></p>
+</div>
+
+<script>
+  $( "#search" ).submit(function( event ) {
+    location.pathname = "/info/" + $("#tel").val()
+    event.preventDefault();
+  });
+</script>
+
+</body>
+</html>

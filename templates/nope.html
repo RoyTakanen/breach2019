@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <title>Ei löytynyt!</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="jumbotron text-center">
+  <h1>Facebook 2019 -tietovuoto tarkastus</h1>
+</div>
+
+<div class="container">
+    <form id="search">
+        <div class="row">
+          <div class="col-md-10">
+            <input type="tel" class="form-control" id="tel" placeholder="Puhelinnumero muodossa: 358401234567" name="tel">
+          </div>
+          <div class="col">
+            <button type="submit" class="btn btn-primary mb-2">Tarkasta</button>
+          </div>
+        </div>
+    </form>
+</div>
+
+
+<div class="container">
+    Kysely kesti: {{ time }}s
+    <br>
+    <h2>Tiedot:</h2>
+    <br>
+    <div class="card">
+        <div class="card-header">Ei löytynyt!</div>
+        <div class="card-body">
+            <p>Onnittelut! Puhelinnumeroa ei löytynyt vuodetusta tietokannasta!</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    $( "#search" ).submit(function( event ) {
+      location.pathname = "/info/" + $("#tel").val()
+      event.preventDefault();
+    });
+</script>
+  
+
+</body>
+</html>

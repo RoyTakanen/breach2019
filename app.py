@@ -12,13 +12,11 @@ def etusivu():
 def get_info(phone):
    start_time = time.time()
    try:
-      query = { "phone": phone }
-
-      finish_time = time.time() - start_time
+      finish_time = '{:f}'.format(time.time() - start_time)
 
       return render_template('info.html', info=user, time=finish_time)
    except:
-      finish_time = time.time() - start_time      
+      finish_time = '{:f}'.format(time.time() - start_time) 
       return render_template('nope.html', time=finish_time)
 
 @app.route('/*')

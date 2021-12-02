@@ -1,10 +1,6 @@
 # breach2019
 Tarkasta mitkä tiedot sinusta on vuotanut Facebookin vuoden 2019 tietomurrossa.
 
-## Demo
-
-[https://breach2019.kaikkitietokoneista.net/](https://breach2019.kaikkitietokoneista.net/)
-
 ## Valmistelu
 
 Ennen ohjelman käyttöönottoa tarvitset kopion `Finland.txt`-nimisestä tiedostosta, joka löytyy tietovuodosta. Tämä pitää olla omasta takaa. Aseta tiedosto kansioon `data` omalla nimellään. 

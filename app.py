@@ -3,6 +3,15 @@ import time
 
 app = Flask(__name__)
 
+print("Ladataan suomen tietovuotoa...")
+finland = open("data/Finland.txt", "r").read().splitlines()
+print("Suomen tietovuoto ladattu!")
+
+def search(wanted_phone):
+   for index, line in enumerate(finland):
+      phone = line.split(":")[0]
+      if phone == wanted_phone:
+         return index
 
 @app.route('/')
 def etusivu():
@@ -12,6 +21,24 @@ def etusivu():
 def get_info(phone):
    start_time = time.time()
    try:
+      index = search(phone)
+
+      splittedline = finland[index].split(":")
+
+      user = {
+         "fb": splittedline[1],
+         "first_name": splittedline[2],
+         "las_name": splittedline[3],
+         "gender": splittedline[4],
+         "homeplace": splittedline[5],
+         "birthplace": splittedline[6],
+         "other2": splittedline[7],
+         "other3": splittedline[8],
+         "other4": splittedline[9],
+         "other5": splittedline[10],
+         "other6": splittedline[11]
+      }
+
       finish_time = '{:f}'.format(time.time() - start_time)
 
       return render_template('info.html', info=user, time=finish_time)

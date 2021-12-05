@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  breach2019:
+    build: .
+    ports:
+      - 8080:5000
+    volumes:
+      - ./data:/app/data

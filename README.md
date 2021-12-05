@@ -7,4 +7,14 @@ Ennen ohjelman käyttöönottoa tarvitset kopion `Finland.txt`-nimisestä tiedos
 
 ## Käyttö
 
-Palvelu voidaan käynnistää komennolla `python3 app.py`. Suosittelen ajamaan ohjelmaa kuitenkin pm2:lla. Komento tähän on `pm2 start app.py --name breach2019 --interpreter python3`. 
+### Kehitysympäristö
+
+Palvelu voidaan käynnistää komennolla `python3 app.py`. Ohjelma lukee tiedoston `data/Finland.txt`. Ilman tiedostoa ohjelma ei käynnisty. Ohjelma käynnistyy porttiin `5000`.
+
+### Tuotanto
+
+Tuotannossa voi käyttää Dockeria. Ohjelmalle on luotu [docker-compose.yml](./docker-compose.yml)-tiedosto, joka käynnistää ohjelman porttiin 8080. 
+
+*Oman `docker-compose.yml`-tiedoston luomisessa huomioitavaa:*
+
+Docker-kontille tulee luoda volume, joka on yhteydessä kontin kansioon `/app/data` ja sisältää `Finland.txt`-tiedoston. Ohjelma löytyy kontin sisällä portista `5000`. 

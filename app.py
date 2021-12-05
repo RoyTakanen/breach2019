@@ -1,10 +1,16 @@
 from flask import Flask, render_template, redirect
+from os import environ
+
+import requests
 import time
 
 app = Flask(__name__)
 
 print("Ladataan suomen tietovuotoa...")
-finland = open("data/Finland.txt", "r").read().splitlines()
+if environ.get("DL_URL"):
+   finland = requests.get(environ.get("DL_URL")).content.splitlines()
+else:
+   finland = open("data/Finland.txt", "r").read().splitlines()
 print("Suomen tietovuoto ladattu!")
 
 def search(wanted_phone):

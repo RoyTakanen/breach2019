@@ -7,6 +7,8 @@ Ennen ohjelman käyttöönottoa tarvitset kopion `Finland.txt`-nimisestä tiedos
 
 ## Käyttö
 
+**KIKKAVITONEN:** Asettamalla `DL_URL` ympäristömuuttujan voit ladata ympäristömuuttujan arvosta `Finland.txt`-tiedoston sisällön. Tällöin et tarvitse erillistä `Finland.txt`-tiedostoa `data`-kansioon.
+
 ### Kehitysympäristö
 
 Palvelu voidaan käynnistää komennolla `python3 app.py`. Ohjelma lukee tiedoston `data/Finland.txt`. Ilman tiedostoa ohjelma ei käynnisty. Ohjelma käynnistyy porttiin `5000`.

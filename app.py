@@ -6,18 +6,40 @@ import time
 
 app = Flask(__name__)
 
+phones = {}
+
 print("Ladataan suomen tietovuotoa...")
 if environ.get("DL_URL"):
-   finland = requests.get(environ.get("DL_URL")).content.splitlines()
+  finland = requests.get(environ.get("DL_URL")).content.splitlines()
 else:
-   finland = open("data/Finland.txt", "r").read().splitlines()
+  finland = open('data/Finland.txt', 'r').read().splitlines()
+
+for line in finland:
+  splittedline = line.replace('\n', '').split(':')
+
+  try:
+    user = {
+      "fb": splittedline[1],
+      "first_name": splittedline[2],
+      "las_name": splittedline[3],
+      "gender": splittedline[4],
+      "homeplace": splittedline[5],
+      "birthplace": splittedline[6],
+      "married": splittedline[7],
+      "job": splittedline[8],
+      "other4": splittedline[9],
+      "other5": splittedline[10],
+      "email": splittedline[11]
+    }
+
+    phones[splittedline[0]] = user
+  except:
+    print("Yhdellä rivillä on virheellinen syntaksi...")
+
 print("Suomen tietovuoto ladattu!")
 
 def search(wanted_phone):
-   for index, line in enumerate(finland):
-      phone = line.split(":")[0]
-      if phone == wanted_phone:
-         return index
+  return phones[wanted_phone]
 
 @app.route('/')
 def etusivu():
@@ -27,23 +49,7 @@ def etusivu():
 def get_info(phone):
    start_time = time.time()
    try:
-      index = search(phone)
-
-      splittedline = finland[index].split(":")
-
-      user = {
-         "fb": splittedline[1],
-         "first_name": splittedline[2],
-         "las_name": splittedline[3],
-         "gender": splittedline[4],
-         "homeplace": splittedline[5],
-         "birthplace": splittedline[6],
-         "other2": splittedline[7],
-         "other3": splittedline[8],
-         "other4": splittedline[9],
-         "other5": splittedline[10],
-         "other6": splittedline[11]
-      }
+      user = search(phone)
 
       finish_time = '{:f}'.format(time.time() - start_time)
 

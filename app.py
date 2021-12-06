@@ -39,7 +39,9 @@ for line in finland:
 print("Suomen tietovuoto ladattu!")
 
 def search(wanted_phone):
-  return phones[wanted_phone]
+  if wanted_phone in phones:
+    return phones[wanted_phone]
+  return false
 
 @app.route('/')
 def etusivu():
@@ -48,15 +50,11 @@ def etusivu():
 @app.route('/info/<phone>')
 def get_info(phone):
    start_time = time.time()
-   try:
-      user = search(phone)
+    user = search(phone)
 
-      finish_time = '{:f}'.format(time.time() - start_time)
+    finish_time = '{:f}'.format(time.time() - start_time)
 
-      return render_template('info.html', info=user, time=finish_time)
-   except:
-      finish_time = '{:f}'.format(time.time() - start_time) 
-      return render_template('nope.html', time=finish_time)
+    return render_template('info.html', info=user, time=finish_time)
 
 @app.route('/*')
 def not_found():

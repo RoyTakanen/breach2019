@@ -3,6 +3,7 @@ version: '3'
 services:
   breach2019:
     build: .
+    restart: alway
     ports:
       - 8080:5000
     volumes:
